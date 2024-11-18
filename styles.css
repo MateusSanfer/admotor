@@ -1,0 +1,144 @@
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+/* header*/
+.header {
+  background-color: #b20f0f;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  height: 6rem;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav ul li {
+  margin: 15px 0;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+}
+
+.nav ul li a:hover {
+  text-decoration: underline;
+}
+.maintop{ 
+ text-align: center;
+
+ width: 100%;
+}
+
+/* Conteúdo Principal */
+.main-content {
+  margin-left: 5%;
+  padding: 20px;
+  width: calc(100% - 250px);
+  background-color: white;
+}
+
+.dashboard-section {
+  display: none;
+ 
+}
+
+.dashboard-section.active {
+  display: block;
+  display: flex;
+  align-items: center;
+}
+
+/* Botões */
+button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.modal-body form .form-label {
+  font-weight: bold;
+}
+.dashboard-section {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  justify-content: space-between; /* Distribui os itens horizontalmente */
+}
+
+.dashboard-section h1 {
+  margin: 0; /* Remove margens adicionais do H1 */
+}
+
+.dashboard-section .btn {
+  margin-left: 5px; /* Espaço entre os botões */
+  background: #b20f0f;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+#addEmployeeBtn{
+padding: 6px 12px;
+}

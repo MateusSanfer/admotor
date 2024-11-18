@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Gerenciamento de Veículos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    
+  </head>
+  <body>
+    <!-- Menu de Navegação Lateral -->
+   <header class="header">
+    <nav class="nav container">
+      <h2>Gestão de Veículos</h2>
+      <ul class="d-flex list-unstyled align-items-center gap-3">
+
+<!-- logout -->
+        <li>
+          <a href="#" id="logoutLink">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+            </svg>
+          </a>
+        </li>
+        <li >
+          <!-- Link com SVG para abrir o modal -->
+          <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="profile-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M13.468 12.37C12.758 11.226 11.168 10.5 8 10.5s-4.758.726-5.468 1.87A6.956 6.956 0 0 0 8 15a6.956 6.956 0 0 0 5.468-2.63z"/>
+          <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1z"/>
+          </svg>
+          </a>
+        </li>
+
+      </ul>
+  </nav>
+   </header>
+<main style="margin-top:5%;width: 100%; height: 100%; background-color: #f1f3f4;" >
+
+<div class="maintop"> 
+  <section id="welcomeSection" class="dashboard-section" > 
+    <h1 style="margin-left: 20px;">Bem-vindo, <span id="userName"></span>!</h1> 
+    <div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVehicleModal"> Adicionar Veículo </button> 
+    <button id="addEmployeeBtn" style="margin: 10px ; background: #b20f0f;">Adicionar Funcionário</button> </section> </div>
+</div>
+</div>
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="card-header">Total de Veículos</div>
+    <div class="card-value">12</div>
+  </div>
+  <div class="stat-card">
+    <div class="card-header">Funcionários Ativos</div>
+    <div class="card-value">8</div>
+  </div>
+  <div class="stat-card">
+    <div class="card-header">Tarefas em Andamento</div>
+    <div class="card-value">5</div>
+  </div>
+  <div class="stat-card">
+    <div class="card-header">Manutenções Pendentes</div>
+    <div class="card-value">3</div>
+  </div>
+</div>
+<!-- Modal de Cadastro de Veículo -->
+<div
+  class="modal fade"
+  id="addVehicleModal"
+  tabindex="-1"
+  aria-labelledby="addVehicleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addVehicleModalLabel">
+          Cadastrar Veículo
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="vehicleForm">
+          <!-- ID do veículo (hidden) -->
+          <input type="hidden" id="vehicleId" name="vehicleId" />
+          <div class="mb-3">
+            <label for="dono" class="form-label">Dono</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dono"
+              name="dono"
+              placeholder="Digite o nome do `Proprietario"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="placa" class="form-label">Placa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="placa"
+              name="placa"
+              placeholder="Digite a placa do veículo"
+              required
+            />
+          </div>
+          <!-- Marca -->
+          <div class="mb-3">
+            <label for="marca" class="form-label">Marca</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              name="marca"
+              placeholder="Digite a marca do veículo"
+              required
+            />
+          </div>
+
+          <!-- Modelo -->
+          <div class="mb-3">
+            <label for="modelo" class="form-label">Modelo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="modelo"
+              name="modelo"
+              placeholder="Digite o modelo do veículo"
+              required
+            />
+          </div>
+
+          <!-- Ano -->
+          <div class="mb-3">
+            <label for="ano" class="form-label">Ano</label>
+            <input
+              type="number"
+              class="form-control"
+              id="ano"
+              name="ano"
+              placeholder="Digite o ano do veículo"
+              min="1900"
+              max="2099"
+              required
+            />
+          </div>
+
+          <!-- Cor -->
+          <div class="mb-3">
+            <label for="cor" class="form-label">Cor</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cor"
+              name="cor"
+              placeholder="Digite a cor do veículo"
+              required
+            />
+          </div>
+
+          <!-- Situação -->
+          <div class="mb-3">
+            <label for="situacao" class="form-label">Situação</label>
+            <select
+              class="form-select"
+              id="situacao"
+              name="situacao"
+              required>
+              <option value="" selected disabled>
+                Selecione a situação
+              </option>
+              <option value="Disponível">Disponível</option>
+              <option value="Em Uso">Em Uso</option>
+              <option value="Em Manutenção">Em Manutenção</option>
+            </select>
+          </div>
+
+          <!-- Responsável -->
+          <div class="mb-3">
+            <label for="responsavelId" class="form-label"
+              >Responsável</label>
+            <select
+              class="form-select"
+              id="responsavelId"
+              name="responsavelId"
+              required>
+
+              <option value="" selected disabled>
+                Selecione o responsável
+              </option>
+              <!-- Opções dinâmicas carregadas via JavaScript -->
+            </select>
+          </div>
+           <!-- Cor -->
+           <div class="mb-3">
+            <label for="evento" class="form-label">Evento</label>
+            <input
+              type="text"
+              class="form-control"
+              id="evento"
+              name="evento"
+              placeholder="Digite o evento "
+              required/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal" >
+          Cancelar</button>
+        <button
+          type="submit"
+          form="vehicleForm"
+          class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="main-content">
+        <div id="vehicleList" class="container mt-4">
+          <h2>Lista de Veículos</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Modelo</th>
+                <th>Dono</th>
+                <th>Situação</th>
+                <th>Evento</th>
+                <th>Responsável</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="vehicleTableBody">
+              <!-- Linhas dinâmicas de veículos -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+<!-- Gerenciar Funcionários (Somente Administradores) -->
+      <section id="employeesSection" class="dashboard-section">
+    
+        <!-- Modal de Gerenciamento de Funcionários -->
+        <div
+          class="modal fade"
+          id="employeeModal"
+          tabindex="-1"
+          aria-labelledby="employeeModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+            
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <!-- Formulário para adicionar ou editar funcionário -->
+                <form id="employeeForm">
+                  <div class="mb-3">
+                    <label for="employeeName" class="form-label">Nome</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="employeeName"
+                      placeholder="Digite o nome completo"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="employeeEmail" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="employeeEmail"
+                      placeholder="Digite o email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="employeeRole" class="form-label">Papel</label>
+                    <select class="form-select" id="employeeRole" required>
+                      <option value="" disabled selected>
+                        Selecione o papel
+                      </option>
+                      <option value="Administrador">Administrador</option>
+                      <option value="Operador">Operador</option>
+                      <option value="Consultor">Consultor</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+                <hr />
+                <!-- Lista de funcionários existentes -->
+                <h5>Funcionários Cadastrados</h5>
+                <ul id="employeesList" class="list-group">
+                  <!-- Itens dinâmicos adicionados via JavaScript -->
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="employeesList">
+          <!-- Lista dinâmica de funcionários será inserida aqui -->
+        </div>
+      </section>
+
+      <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="historyModalLabel">Histórico de Interações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="historyList">
+                        <!-- Histórico será carregado dinamicamente -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      <div
+        class="modal fade"
+        id="commentsModal"
+        tabindex="-1"
+        aria-labelledby="commentsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="commentsModalLabel">Comentários</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="commentsList">
+                <!-- Lista de comentários será carregada aqui -->
+              </div>
+              <textarea
+                id="newComment"
+                class="form-control"
+                placeholder="Adicione um comentário..."
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="addComment()"
+              >
+                Adicionar Comentário
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="editVehicleModal" tabindex="-1" aria-labelledby="editVehicleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editVehicleModalLabel">Editar Veículo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editVehicleId">
+              <div class="mb-3">
+                <label for="editModelo" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="editModelo" placeholder="Modelo do veículo">
+              </div>
+
+              <div class="mb-3">
+                <label for="editSituacao" class="form-label">Situação</label>
+                <select
+                  class="form-select"
+                  id="editSituacao"
+                  name="situacao"
+                  required>
+                  <option value="" selected disabled>
+                    Selecione a situação
+                  </option>
+                  <option value="Disponível">Disponível</option>
+                  <option value="Em Uso">Em Uso</option>
+                  <option value="Em Manutenção">Em Manutenção</option>
+                </select>
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" onclick="saveVehicleChanges()">Salvar Alterações</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Perfil -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">Perfil do Usuário</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <p><strong>Nome:</strong> <span id="profileName">--</span></p>
+          <p><strong>Email:</strong> <span id="profileEmail">--</span></p>
+          <p><strong>Papel:</strong> <span id="profileRole">--</span></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="dashboard.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+</body>
+</html>
+    

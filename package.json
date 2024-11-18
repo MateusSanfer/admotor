@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "firebase": "^11.0.2"
+  },
+
+  "stats": {
+    "totalVehicles": 12,
+    "activeEmployees": 8,
+    "tasksInProgress": 5,
+    "pendingMaintenances": 3
+  }
+}

@@ -1,0 +1,123 @@
+body {
+  background-image:url(image/backgroud-login.jpg);
+  background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+  background-repeat: no-repeat; /* Evita que a imagem se repita */
+  background-position: center; /* Centraliza a imagem */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.384);
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  color: rgb(255, 0, 0);
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: rgb(255, 255, 255);
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #ff0000;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #ff0000, #ff0000);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: opacity 0.2s;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.links {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.success-message {
+  color: #00C851;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none;
+}
+
+.password-requirements {
+  text-align: left;
+  font-size: 12px;
+  color: #727272;
+  margin: 10px 0;
+  padding-left: 15px;
+}
+
+.password-requirements li {
+  margin: 5px 0;
+}
+
+.password-requirements li.valid {
+  color: #00C851;
+}
+
+.valid {
+  color: green;
+}
